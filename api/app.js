@@ -49,7 +49,7 @@ app.use('/api', require('./routes/courses'));
 // Root route setup with greeting//
 app.get('/', (req, res) => {
   res.json({
-    message: 'Welcome to REST API project!',
+    message: 'Welcome to Carla Houston REST API project!',
   });
 });
 

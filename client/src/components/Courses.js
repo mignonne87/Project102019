@@ -15,7 +15,7 @@ class Courses extends Component{
         const { data } = this.props.context;
         
         try{
-            // all courses
+            //  courses
             const res = await data.getCourses('/courses')
             if(res.length > 0){
                 this.setState({courses: res});
@@ -40,7 +40,7 @@ class Courses extends Component{
         
         const { courses, isRedirect } = this.state;
 
-        //if courses is not null fetched courses
+        //if courses is not null
         const lessons = 
         (courses !== null)?
         courses.map(val => (
@@ -53,7 +53,7 @@ class Courses extends Component{
         ))
         :false;
 
-        // direct to if an error is on page
+        // direct if error is on page
         if(isRedirect){
             return <Redirect to={{
                 pathname: '/error',

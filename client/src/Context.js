@@ -44,16 +44,14 @@ export class Provider extends Component {
 
     const user = await this.data.getUser(emailAddress, password);
     /*
-      encrypts password to be saved in state, incase user doesn allow cookies encryptedPassword password will only be used 
-      to create/delete and update courses and not for better login experience
+      encrypts password to be saved in state
     */
     const encryptedPassword = this.cryptr.encrypt(password);
 
     if (!user.isNull) {
       this.setState({ authenticatedUser: user });
       this.state.authenticatedUser.password = encryptedPassword;
-      //saves authenticated user to cookies for 
-      //better user experience when user re visits site
+         
       Cookies.set('authenticatedUser', JSON.stringify(user), {expires: 1});
     }
     
@@ -64,8 +62,8 @@ export class Provider extends Component {
     this.setState({ authenticatedUser: null });
   }
 
-  //method will handle to render 
-  //validation errors by passing an array of validation message
+ 
+  //validation error message
   errorsDisplay = ( err ) => (
     <div>
       <h2 className="validation--errors--label">Validation errors</h2>
@@ -77,7 +75,7 @@ export class Provider extends Component {
     </div>
   )
 
-  //method for all cancel button
+  // cancel button
   cancel = ( e, path ) => {
     e.preventDefault();
     if(!path)path = '/'

@@ -40,7 +40,7 @@ class CourseDetail extends PureComponent {
                 materialsNeeded,
                 estimatedTime,
                 user: User,
-               // show deleted  and updated if the user is logged in the page//
+               // show deleted if the user is logged in the page//
                 boolean: this.props.context.authenticatedUser === null 
                         || this.props.context.authenticatedUser.id !== User.id
             });
@@ -71,7 +71,7 @@ class CourseDetail extends PureComponent {
         const { emailAddress,password } = context.authenticatedUser;
         const decryptedPass = context.cryptr.decrypt(password);
         await context.data.deleteCourses( path, emailAddress, decryptedPass );
-        history.push('/');//Will take user home after deletion
+        history.push('/');
     }
     
     render(){

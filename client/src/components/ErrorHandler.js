@@ -4,12 +4,12 @@ const ErrorHandler = ({location:{ state }}) => {
 
 let title;
 let message;
-//if the routes leds no where means user requested for wrong route// 
+// user requested wrong route// 
 if(!state){
     title = 'Not Found';
     message = 'Sorry! We couldn\'t find the page you\'re looking for.';
 }else{
-    //else server error occurred or a forbidden page
+    //else server error occurred
     title = state.title;
     message = state.message;
 }

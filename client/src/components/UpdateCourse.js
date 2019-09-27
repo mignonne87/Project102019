@@ -40,8 +40,8 @@ class UpdateCourse extends PureComponent{
             } = course;
 
             if(course !== null){
-                // if user doesnt not own the course it will throw a err
-                //otherwise it will change state with the fetched data
+                // throw a err
+                
                 if(authenticatedUser.id !== User.id){
                     
                      let err = {
@@ -77,7 +77,7 @@ class UpdateCourse extends PureComponent{
 
 
     
-    //method which will submit the course with new data which is picked up from state.
+    //submit
     submit = async (e) => {
         e.preventDefault();
 
@@ -90,7 +90,7 @@ class UpdateCourse extends PureComponent{
             history
         } = this.props;
 
-        //data in state
+        
         const {
             id,
             description,
@@ -100,7 +100,7 @@ class UpdateCourse extends PureComponent{
         } = this.state;
 
 
-        //new course data
+        //new course
         const newCourse = {
             description,
             estimatedTime,
@@ -109,13 +109,12 @@ class UpdateCourse extends PureComponent{
         };
 
         const { emailAddress, password } = authenticatedUser;
-        const decryptedString = decrypt(password);//decrypted password
+        const decryptedString = decrypt(password);
 
         try{
 
             const res = await data.updateCourse(`/courses/${id}`, newCourse, emailAddress, decryptedString);            
-            //if res has a message property, it means an error has occurred
-            //otherwise it will move to home page
+          
             if(res.message) throw res;
             else history.push('/');
 
@@ -166,18 +165,14 @@ class UpdateCourse extends PureComponent{
                     state: this.state.redirectMessages
                 }} />
             );
-            /*
-            when a user is send to the forbidden page just right before getting there, they were getting a glance of the update course
-            returned JSX, after a few test i made i found out the when a user was heading to the forbidden page, this componet renders 3 times,
-            not sure if thats the mean cause. My solution to aviod that visual disturbances I've set a isRender propety in state,if its true only 
-            */
+            
         }else if(isRender){
 
             return(
                 <div className="bounds course--detail">
                     <h1>Update Course</h1>
                     {
-                        //diplayes validation messages if available
+                        //diplayes validation message
                         (errorMessages)?
                         errDisplay(errorMessages)
                         :false 

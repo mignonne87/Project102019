@@ -2,7 +2,7 @@ import React,{ Fragment } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 
 function Header({ context:{ authenticatedUser }, location:{ pathname }}){
- //css styling for logo color
+ 
   const style = {
     color:'#fff'
   }
@@ -14,7 +14,7 @@ function Header({ context:{ authenticatedUser }, location:{ pathname }}){
           <h1 className="header--logo"><Link style={style} to="/">Courses</Link></h1>
           <nav>
           {
-            //if your is authenticated then render welcome message and sign out button in header
+            //if authenticated render welcome message and sign out button in header
             (authenticatedUser !== null)?
             <Fragment>
               <span>Welcome,{` ${authenticatedUser.firstName} ${authenticatedUser.lastName}`} </span>

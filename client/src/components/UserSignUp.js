@@ -17,12 +17,12 @@ class SignUp extends Component{
         const { password, confirmPassword } = this.state;
 
         if(password !== confirmPassword){
-            //if both pass dont match set error message
+        
             this.setState({
                 errorMessages:['Make Sure Both Password Matchs']
             })
         }else {
-            // Overwise submits
+           
             this.submit()
         }
     }
@@ -46,7 +46,7 @@ class SignUp extends Component{
         };
 
         try{
-            //once user is created, user will be sidned in and taken to home page
+            //user will be signed in and sent to home page
             await data.createUser(user);
             await actions.signIn(emailAddress, password);
             this.props.history.push('/');
@@ -59,7 +59,7 @@ class SignUp extends Component{
         }
     }
 
-  //changes value of state from input form 
+  
   change = (e) => {
         const name = e.target.name;
         const value = e.target.value;
@@ -67,7 +67,7 @@ class SignUp extends Component{
     }
 
     render(){
-        //css cursor style
+        
         const style = {
             cursor: "pointer"
         }
@@ -89,7 +89,7 @@ class SignUp extends Component{
                 <div className="grid-33 centered signin">
                 <h1>Sign Up</h1>
                 {
-                    //diplayes validation messages if available 
+                    //diplayes validation messages
                     (errorMessages)?
                     errDisplay(errorMessages)
                     :false

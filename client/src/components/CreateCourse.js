@@ -36,12 +36,12 @@ class NewCourse extends Component{
     }
 
     const { emailAddress, password } = authenticatedUser;
-    const decryptedString = cryptr.decrypt(password);//decrypt password
+    const decryptedString = cryptr.decrypt(password);
 
     try{
       
       await data.createCourses('/courses', newData, emailAddress ,decryptedString);
-      this.props.history.push('/');//Goes home after course is created
+      this.props.history.push('/');//return home after course is created
     
     }catch(err){
 
@@ -57,7 +57,7 @@ class NewCourse extends Component{
     }
   }
 
-  //changes value of state from input form 
+  
   change = (e) => {
     const name = e.target.name;
     const value = e.target.value;
@@ -68,7 +68,7 @@ class NewCourse extends Component{
 
   render(){
     
-    //css cursor style 
+    
     const style = {
       cursor: "pointer"
     };
@@ -87,7 +87,7 @@ class NewCourse extends Component{
 
     const { errDisplay,cancel } = this.props.context.actions;
   
-    //any error occurred user will be directed to an error page
+    //any error occurred user will be directed to error page
     if(redirect){
       return <Redirect to={{
           pathname: redirectPath,
@@ -99,7 +99,7 @@ class NewCourse extends Component{
       <div className="bounds course--detail">
         <h1>Create Course</h1>
         {
-         //Show validation messages if any
+         //Show validation messages if
           (errorMessages !== null)
           ?errDisplay(errorMessages)
           :false

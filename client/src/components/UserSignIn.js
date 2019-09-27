@@ -9,7 +9,7 @@ class SignIn extends Component{
       errorMessages: null,
   }
 
-  //changes value of state from input form 
+  //change input form 
   change = (e) => {
     const name = e.target.name;
     const value = e.target.value;
@@ -25,9 +25,7 @@ class SignIn extends Component{
     try{
 
       const res = await signIn(emailAddress, password);
-      //if res is null, it means an error has occurred
-        //either wrong email or password
-      //otherwise it will move to home page or last page visited before the signed in
+      
       if(res.isNull) throw res;
       else history.push(from);
 
@@ -40,7 +38,7 @@ class SignIn extends Component{
 
   render(){
     
-      //css cursor style 
+      
       const style = {
           cursor: "pointer"
       }
@@ -58,7 +56,7 @@ class SignIn extends Component{
             <div className="grid-33 centered signin">
                 <h1>Sign In</h1>
                 {
-                  //diplayes validation messages if available 
+                  //diplayes validation messages
                   (errorMessages)?
                   errDisplay(errorMessages)
                   :false
